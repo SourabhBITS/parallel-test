@@ -10,6 +10,9 @@ jobs:
     steps:
       - run:
           command: |
-            echo $(circleci tests glob "tests/test_*.sh")
-            circleci tests glob "tests/test_*.sh" | circleci tests split > /tmp/tests-to-run
-            cat /tmp/tests-to-run
+            TESTFILES=$(circleci tests glob "tests/test_*.sh")
+            echo $TESTFILES | tr ' ' '\n' | sort | uniq > circleci_test_files.txt
+            cat circleci_test_files.txt
+            TESTFILES=$(circleci tests split circleci_test_files.txt)
+            TESTFILES=$(echo $TESTFILES | tr "/" "." | sed 's/\.py$//g')
+            echo $TESTFILES

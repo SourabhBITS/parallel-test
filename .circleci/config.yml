@@ -10,6 +10,6 @@ jobs:
     steps:
       - run:
           command: |
-            echo $(circleci tests glob "tests/**/test_*.sh")
-            circleci tests glob "tests/**/test_*.sh" | circleci tests split > tmp/tests-to-run
-            cat tmp/tests-to-run
+            echo $(circleci tests glob "tests/test_*.sh")
+            circleci tests glob "tests/test_*.sh" | circleci tests split > /tmp/tests-to-run
+            cat /tmp/tests-to-run

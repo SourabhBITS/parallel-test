@@ -1,0 +1,13 @@
+jobs:
+  build:
+    docker:
+      - image: 'hub.docker.prod.walmart.com/cimg/node:14.10.1'
+    
+    parallelism: 3
+    resource_class: large
+    # working_directory: ~/my-app
+    steps:
+      - run:
+          command: |
+            echo $(circleci tests glob "tests/**/test_*.sh")
+            circleci tests glob "tests/**/test_*.sh" | xargs -n 1 echo

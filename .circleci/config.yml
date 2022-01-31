@@ -6,8 +6,10 @@ jobs:
     parallelism: 3
     resource_class: large
     # working_directory: ~/my-app
+    # circleci tests glob "tests/**/test_*.sh" | xargs -n 1 echo
     steps:
       - run:
           command: |
             echo $(circleci tests glob "tests/**/test_*.sh")
-            circleci tests glob "tests/**/test_*.sh" | xargs -n 1 echo
+            circleci tests glob "tests/**/test_*.sh" | circleci tests split > tmp/tests-to-run
+            cat tmp/tests-to-run

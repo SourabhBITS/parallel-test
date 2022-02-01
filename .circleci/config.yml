@@ -11,8 +11,6 @@ jobs:
       - checkout
       - run:
           command: |
-            chmod a+x run-tests.sh
-            chmod a+x tests/**/test_*.sh
             circleci tests glob tests/**/test_*.sh | tr ' ' '\n' | sort | uniq > circleci_test_files.txt
             TESTFILES=$(circleci tests split circleci_test_files.txt)
             echo $TESTFILES > circleci_test_files.txt

@@ -13,4 +13,4 @@ jobs:
           command: |
             circleci tests glob tests/**/test_*.sh | tr ' ' '\n' | sort | uniq > circleci_test_files.txt
             TESTFILES=$(circleci tests split circleci_test_files.txt)
-            echo $TESTFILES | tr ' ' '\n' | sort | uniq > circleci_test_files.txt
+            echo $TESTFILES

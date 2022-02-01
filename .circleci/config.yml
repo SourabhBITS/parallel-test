@@ -8,8 +8,11 @@ jobs:
     # working_directory: ~/my-app
     # circleci tests glob "tests/**/test_*.sh" | xargs -n 1 echo
     steps:
+      - checkout
       - run:
           command: |
+            pwd
+            ls
             ls tests/**/test_*.sh| tr ' ' '\n' | sort | uniq > circleci_test_files.txt
             cat circleci_test_files.txt
             TESTFILES=$(circleci tests split circleci_test_files.txt)

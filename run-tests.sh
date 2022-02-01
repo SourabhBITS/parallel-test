@@ -1,5 +1,4 @@
 echo "Start!"
-for p in (circleci_test_files.txt)
-do
-    echo "${p}"
-done
+while read p; do
+"$p"
+done <circleci_test_files.txt

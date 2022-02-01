@@ -14,3 +14,5 @@ jobs:
             circleci tests glob tests/**/test_*.sh | tr ' ' '\n' | sort | uniq > circleci_test_files.txt
             TESTFILES=$(circleci tests split circleci_test_files.txt)
             echo $TESTFILES
+            echo $TESTFILES > circleci_test_files.txt
+            ./run-tests.sh

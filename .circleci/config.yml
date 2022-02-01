@@ -11,9 +11,6 @@ jobs:
       - checkout
       - run:
           command: |
-            pwd
-            ls
             circleci tests glob tests/**/test_*.sh | tr ' ' '\n' | sort | uniq > circleci_test_files.txt
-            cat circleci_test_files.txt
             TESTFILES=$(circleci tests split circleci_test_files.txt)
-            echo $TESTFILES
+            echo $TESTFILES | tr ' ' '\n' | sort | uniq > circleci_test_files.txt

@@ -15,4 +15,9 @@ jobs:
             TESTFILES=$(circleci tests split circleci_test_files.txt)
             echo $TESTFILES
             echo $TESTFILES > circleci_test_files.txt
+            cat circleci_test_files.txt | tr ' ' '\n' | sort | uniq > circleci_test_files.txt
+            cat circleci_test_files.txt
+            ls -lrt
+            chmod a+x run-tests.sh
+            ls -lrt
             ./run-tests.sh

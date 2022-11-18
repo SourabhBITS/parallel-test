@@ -1,10 +1,10 @@
 jobs:
   build:
     docker:
-      - image: 'hub.docker.prod.walmart.com/cimg/node:14.10.1'
+      - image: cimg/node:14.10.1
     
     parallelism: 3
-    resource_class: large
+    resource_class: medium
     # working_directory: ~/my-app
     # circleci tests glob "tests/**/test_*.sh" | xargs -n 1 echo
     steps:
